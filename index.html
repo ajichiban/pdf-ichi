@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
+    <link rel="stylesheet" href="bootstrap.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="imprimir">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card p-3">
+                        <div class="">
+                            <h1 class="text-danger">my title </h1>
+                            <h2>second title</h2>
+                        </div>
+                        <hr>
+                        <div class="card-body">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus animi cumque velit explicabo
+                                vel, temporibus quidem nulla laudantium sit vitae, illo nostrum nihil iure pariatur doloribus
+                                doloremque dolor, commodi dicta?</p>
+                            <p>Vitae aut quidem, laboriosam ex asperiores error! Consectetur non voluptates maxime voluptatem
+                                libero dolore consequuntur similique blanditiis. Ratione, quia recusandae. Iste voluptate
+                                nisi provident itaque velit eos amet libero laborum.</p>
+                            <p>Numquam, hic dolorem nobis tenetur quidem tempore voluptate nesciunt. Saepe voluptas vitae pariatur
+                                aliquid? Soluta id fugit beatae, quos tempora laborum rerum! Ea amet aspernatur id maiores
+                                consectetur accusamus fugiat.</p>
+                            <p>Quod autem ab, error reiciendis quia mollitia explicabo eligendi provident. Sunt modi in reprehenderit
+                                maxime quaerat rerum repellat explicabo consequatur nemo ipsum? Animi, veniam. Exercitationem
+                                nobis quam excepturi porro odio?</p>
+                            <p>Eligendi magni quidem rem asperiores, autem placeat fuga saepe excepturi ducimus at et optio
+                                sint illo necessitatibus suscipit, ipsa laudantium magnam eum? Ipsam fugiat dolorem saepe
+                                omnis, id nostrum est.</p>
+                            <p>Natus, sapiente saepe cumque temporibus aperiam error. Laborum ipsa amet laudantium enim. Ut,
+                                veritatis id asperiores magnam quam tempore enim nobis ex. Eius dolorem corrupti dignissimos
+                                sequi exercitationem? Voluptatum, cum!</p>
+                            <p>Sequi recusandae ullam cupiditate eligendi harum tempora nihil inventore aspernatur? Necessitatibus
+                                facere, quibusdam quas consequatur fuga similique, adipisci esse libero laboriosam dolorum
+                                illo nemo inventore modi fugiat labore commodi expedita!</p>
+                            <p>Dolorem praesentium quibusdam vel quidem maiores laborum tempora cum harum. Nihil et animi repudiandae
+                                cum minus perspiciatis! Fugit voluptas numquam aut ut magni, eius quo fuga, aliquid suscipit
+                                minus libero!</p>
+                            <p>Ex, totam quaerat recusandae dolores deserunt, dicta eligendi iusto blanditiis aperiam ut, perferendis
+                                ducimus dolorem laboriosam eos molestiae adipisci perspiciatis porro quisquam sequi voluptatem
+                                laudantium. Eius quae fugiat facere ipsa.</p>
+                            <p>Laudantium minima nulla tenetur fuga cupiditate culpa nisi nam corrupti vero eum placeat doloremque
+                                enim autem facilis blanditiis officia labore aut consequuntur commodi sint, excepturi voluptas
+                                possimus totam! Similique, nemo.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+
+        <div class="row mb-5 justify-content-center">
+            <div class="col-8">
+                <div class="card p-3">
+                    <button class="btn btn-success btn-block">pdf </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script src="jquery-3.min.js"></script>
+
+
+    <script>
+        $(document).ready(function () {
+            $('button').click(pruebaDivAPdf)
+            function pruebaDivAPdf() {
+                console.log($('#imprimir'));
+
+                var pdf = new jsPDF('p', 'pt', 'letter');
+                source = $('#imprimir')[0];
+
+                specialElementHandlers = {
+                    '#bypassme': function (element, renderer) {
+                        return true
+                    }
+                };
+                margins = {
+                    top: 80,
+                    bottom: 60,
+                    left: 40,
+                    width: 522
+                };
+
+                pdf.fromHTML(
+                    source,
+                    margins.left, // x coord
+                    margins.top, { // y coord
+                        'width': margins.width,
+                        'elementHandlers': specialElementHandlers
+                    },
+
+                    function (dispose) {
+                        pdf.save('Prueba.pdf');
+                    }, margins
+                );
+            }
+        })
+
+    </script>
+    <script src="app.js"></script>
+
+</body>
+
+</html>
